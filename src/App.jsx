@@ -332,6 +332,7 @@ section:last-of-type{border-bottom:none}
 }
 `;
 
+// Fallback visual mock handles for browser sandbox APIs
 async function mockAIService(prompt) {
   return "System integration placeholder. To wire up active AI processing frameworks on production domains, configure your environment tokens via cloud backend API endpoints securely.";
 }
@@ -738,6 +739,10 @@ export default function App() {
   const [btt,setBtt]=useState(false);
   const [showCV,setShowCV]=useState(false);
   const [drawerOpen,setDrawerOpen]=useState(false);
+  
+  // Custom Form Handling States
+  const [formState, setFormState] = useState({ name: "", email: "", msg: "" });
+  const [formStatus, setFormStatus] = useState({ loading: false, success: false, error: false });
 
   useEffect(()=>{
     const fn=()=>{
@@ -755,14 +760,42 @@ export default function App() {
 
   const go=id=>document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!formState.email || !formState.msg) return;
+    setFormStatus({ loading: true, success: false, error: false });
+    
+    try {
+      // Formspree payload processing infrastructure
+      const response = await fetch("https://formspree.io/f/xanygbbd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          message: formState.msg
+        })
+      });
+      
+      if (response.ok) {
+        setFormState({ name: "", email: "", msg: "" });
+        setFormStatus({ loading: false, success: true, error: false });
+      } else {
+        setFormStatus({ loading: false, success: false, error: true });
+      }
+    } catch (err) {
+      setFormStatus({ loading: false, success: false, error: true });
+    }
+  };
+
   const projects=[
     {id:"nav",tags:["Fund Administration","NAV Calculation","Reconciliation","IFSC-Ready"],title:"NAV Calculator & Reconciliation Simulator",desc:"A live fund operations tool — calculate Net Asset Value per Share from fund assets and liabilities, then simulate the daily trade reconciliation workflow between Fund Accounting and Custodian records. Detects variances and resolves discrepancies, mirroring the core operational workflow at fund administrators like State Street, Northern Trust, and BNY Mellon.",status:"Live",demo:<NAVCalculator/>},
     {id:"comps",tags:["Financial Modelling","Comparable Analysis","Valuation","FinTech"],title:"Comparable Company Analysis (Comps)",desc:"A live Comps model using real fintech peer data — Wise, Revolut, Nu Holdings, PayPal, and Block. Enter any target company Revenue and EBITDA to see implied enterprise value ranges via EV/Revenue and EV/EBITDA multiples, with a football field chart.",status:"Live",demo:<CompsModel/>},
     {id:"dcf",tags:["Financial Modelling","DCF Valuation","IFSC-Ready","Quantitative Finance"],title:"DCF Valuation Model",desc:"A fully functional, interactive DCF model — adjust any input and enterprise value, FCF projections, and the full output table recalculate in real time. Built to demonstrate the applied valuation and financial modelling depth expected in fund analysis, investment operations, and IFSC finance roles.",status:"Live",demo:<DCFModel/>},
     {id:"kpi",tags:["Fund Reporting","Management Reporting","Dashboard","Financial Engineering"],title:"Financial Performance Dashboard",desc:"An interactive management reporting dashboard tracking revenue against monthly targets, with gross margin and EBITDA margin trends across a full fiscal year. Mirrors the performance attribution, investor reporting, and financial controls work central to fund administration and finance operations roles.",status:"Live",demo:<KPIDashboard/>},
     {id:"roadmap",tags:["Product Strategy","Agile Delivery","SynCore","Roadmapping"],title:"Product Roadmap Planner",desc:"A live roadmap planning and prioritisation tool built around the product strategy work at SynCore EDU LLC. Add initiatives, assign to quarters, set priority levels, and track across a visual board.",status:"Live",demo:<RoadmapPlanner/>},
-    {id:"tools",tags:["Fintech Tools","React","Smart Automation","LLMs"],title:"Career Tools Suite",desc:"Three live tools built into this portfolio — a personal assistant trained on my professional background, a CV tailorer that rewrites CVs against any job description, and a cover letter generator.",status:"Live",demo:null,note:"Available in the Tools section"},
-    {id:"updates",tags:["Content Strategy","Europe & Africa","Publishing","Global Mobility"],title:"Global Relocation Guide",desc:"A content account covering European affairs, African diaspora stories, global mobility, and relocation. Running Global Relocation Guide on X with 13.5K followers — organic growth, zero paid promotion.",status:"Active",demo:null,note:"twitter.com/_AustriaUpdates"},
+    {id:"casestudy",tags:["Case Study","FinTech Portfolio","Revenue Architecture","Analysis"],title:"FinTech Revenue Optimization Strategy (Case Study)",desc:"Deep-dive strategic analysis of multi-million euro product line structures. Documents cross-functional prioritization metrics, SQL-backed automation logic, and tracking frameworks that delivered a 45% revenue uplift and mitigated transactional reconciliation friction for enterprise financial execution systems.",status:"Active",demo:null,note:"Case study overview dataset fully mapped into interactive data frames layout context above."},
+    {id:"updates",tags:["Blog & Content Strategy","Europe & Africa","Publishing","Global Mobility"],title:"Global Relocation Guide (Blog)",desc:"Strategic publishing engine covering European regulatory insights, diaspora transition narratives, and international migration frameworks. Powering the Global Relocation Guide platform on X with over 12.9K engaged professionals built entirely on organic distributions and technical market analysis.",status:"Active",demo:null,note:"Explore comprehensive rolling articles directly at twitter.com/_AustriaUpdates"},
   ]
 
   const skills=[
@@ -870,7 +903,7 @@ export default function App() {
 
       <section id="projects">
         <div className="wrap">
-          <div className="eyebrow">Projects</div>
+          <div className="eyebrow">Projects, Cases &amp; Blog</div>
           <div className="proj-list">
             {projects.map((p,i)=>(
               <div className="proj" key={p.id}>
@@ -967,14 +1000,45 @@ export default function App() {
           <div className="contact-cols">
             <div>
               <div className="ch">Open to finance, product, and technology roles — in Dublin or anywhere remote.</div>
-              <p className="cb">Dublin-based professional, available now. Whether you have an IFSC role, a fully remote opportunity anywhere in the world, or just want to discuss a project — reach out directly.</p>
+              <p className="cb">Dublin-based professional, available now. Fill out the secure gateway form below to transmit custom messages directly to my corporate mailbox inbox execution layers.</p>
+              
+              {/* REAL EMAIL CONTACT GATEWAY */}
+              <form onSubmit={handleFormSubmit} style={{ marginTop: 24, padding: 20, background: C.bg2, border: `1px solid ${C.border}` }}>
+                <div className="fg">
+                  <label className="fl">Your Name</label>
+                  <input className="fi" type="text" value={formState.name} onChange={e => setFormState(p => ({ ...p, name: e.target.value }))} placeholder="John Doe" />
+                </div>
+                <div className="fg">
+                  <label className="fl">Your Email Address *</label>
+                  <input className="fi" type="email" required value={formState.email} onChange={e => setFormState(p => ({ ...p, email: e.target.value }))} placeholder="john@example.com" />
+                </div>
+                <div className="fg">
+                  <label className="fl">Your Message *</label>
+                  <textarea className="fta" required value={formState.msg} onChange={e => setFormState(p => ({ ...p, msg: e.target.value }))} placeholder="Hi Endurance, let's discuss an opening..." />
+                </div>
+                <button className="btn btn-gold btn-sm" type="submit" disabled={formStatus.loading}>
+                  {formStatus.loading ? "Transmitting..." : "Send Secure Message"}
+                </button>
+                
+                {formStatus.success && (
+                  <div style={{ marginTop: 12, fontSize: 10, fontFamily: "'DM Mono', monospace", color: "#4ADE80" }}>
+                    ✓ Message successfully forwarded directly to nwaduhuendurance@gmail.com!
+                  </div>
+                )}
+                {formStatus.error && (
+                  <div style={{ marginTop: 12, fontSize: 10, fontFamily: "'DM Mono', monospace", color: "#E05252" }}>
+                    ⚠ Transmission exception. Please try sending again or reach out manually.
+                  </div>
+                )}
+              </form>
+
               <div className="avail">
                 {["Dublin IFSC","Remote · Worldwide","Fintech","Fund Operations","Product Roles"].map(b=>(
                   <div className="abadge" key={b}><span className="adot"/>{b}</div>
                 ))}
               </div>
             </div>
-            <div className="clinks">
+            <div className="clinks" style={{ alignSelf: "start" }}>
               {[
                 ["LinkedIn","linkedin.com/in/ozoemenam-nwaduhu-2a541123a","https://www.linkedin.com/in/ozoemenam-nwaduhu-2a541123a"],
                 ["X / Twitter","Global Relocation Guide","https://twitter.com/_AustriaUpdates"],
