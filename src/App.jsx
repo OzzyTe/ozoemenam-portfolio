@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+import { Analytics } from "@vercel/analytics/react";
 
 const C = {
   gold:"#C9A84C",goldL:"#E8C97A",goldD:"#8B6914",goldXD:"#2A1F05",goldXXD:"#140E02",
@@ -1163,6 +1164,7 @@ export default function App() {
 
       <div className="wrap"><div className="footer"><div className="footer-n">Nwaduhu Ozoemenam Endurance</div><div className="footer-c">© 2026 · All rights reserved</div></div></div>
       {btt&&<button className="btt" onClick={()=>window.scrollTo({top:0,behavior:"smooth"})}>↑</button>}
+      <Analytics />
     </>
   );
 }
