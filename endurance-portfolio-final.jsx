@@ -1022,3 +1022,5 @@ export default function App() {
     </>
   );
 }
+window.App = App;
+window.Portfolio = App;
