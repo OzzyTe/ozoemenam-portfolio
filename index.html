@@ -15,19 +15,19 @@
 <body class="bg-slate-900 text-slate-100">
     <div id="root"></div>
 
- <script type="text/babel" data-type="module" data-runtime="classic" src="endurance-portfolio-final.jsx?v=1"></script>
-    <script type="text/babel" data-type="module">
-        // Wait briefly for the file resource module context to evaluate completely
-        setTimeout(() => {
-            try {
-                const container = document.getElementById('root');
-                const root = ReactDOM.createRoot(container);
-                // Dynamically access the exported window scope element if standard lookups defer
-                root.render(React.createElement(window.Portfolio || App));
-            } catch(e) {
-                console.error("Render initialization fallback caught:", e);
-            }
-        }, 300);
+<script type="text/babel" src="endurance-portfolio-final.jsx?v=2"></script>
+    <script type="text/babel">
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                try {
+                    const container = document.getElementById('root');
+                    const root = ReactDOM.createRoot(container);
+                    root.render(React.createElement(window.Portfolio || App));
+                } catch(e) {
+                    console.error("Render initialization caught: ", e);
+                }
+            }, 200);
+        });
     </script>
 </body>
 </html>
