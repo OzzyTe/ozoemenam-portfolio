@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ozoemenam Endurance | Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
     <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body>
+<body class="bg-slate-900 text-slate-100">
     <div id="root"></div>
 
-    <script type="text/babel" src="endurance-portfolio-final.jsx"></script>
-    <script type="text/babel">
-        const container = document.getElementById('root');
-        const root = ReactDOM.createRoot(container);
-        root.render(React.createElement(App));
+    <script type="text/babel" data-type="module" src="endurance-portfolio-final.jsx"></script>
+    <script type="text/babel" data-type="module">
+        // Wait briefly for the file resource module context to evaluate completely
+        setTimeout(() => {
+            try {
+                const container = document.getElementById('root');
+                const root = ReactDOM.createRoot(container);
+                // Dynamically access the exported window scope element if standard lookups defer
+                root.render(React.createElement(window.Portfolio || App));
+            } catch(e) {
+                console.error("Render initialization fallback caught:", e);
+            }
+        }, 300);
     </script>
 </body>
 </html>
