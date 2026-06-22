@@ -3,41 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ozoemenam Endurance | Portfolio</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
-    <script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Nwaduhu Ozoemenam Endurance | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100">
     <div id="root"></div>
-
-<script type="text/babel" src="endurance-portfolio-final.jsx?v=2"></script>
-    <script type="text/babel">
-        function mountApp() {
-            // Keep pulling the window object variables until Babel completes compilation
-            const targetApp = window.Portfolio || window.App || (typeof App !== 'undefined' ? App : null);
-            
-            if (targetApp) {
-                try {
-                    const container = document.getElementById('root');
-                    const root = ReactDOM.createRoot(container);
-                    root.render(React.createElement(targetApp));
-                    console.log("Portfolio canvas rendered successfully.");
-                } catch(e) {
-                    console.error("Mount initialization caught: ", e);
-                }
-            } else {
-                // If Babel is still building variables, re-check in 100ms
-                setTimeout(mountApp, 100);
-            }
-        }
-
-        // Start checking once DOM tree layout registers
-        window.addEventListener('DOMContentLoaded', mountApp);
-    </script>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
