@@ -334,7 +334,31 @@ section:last-of-type{border-bottom:none}
 
 // Fallback visual mock handles for browser sandbox APIs
 async function mockAIService(prompt) {
-  return "System integration placeholder. To wire up active AI processing frameworks on production domains, configure your environment tokens via cloud backend API endpoints securely.";
+  const p = prompt.toLowerCase();
+  
+  if (p.includes("avail") || p.includes("start") || p.includes("when")) {
+    return "Endurance is available for an immediate start! He has recently relocated to Dublin, Ireland, and holds a valid visa allowing full-time employment. He is ready to onboard instantly for both hybrid/on-site roles in Dublin and remote contracts globally.";
+  }
+  if (p.includes("acca") || p.includes("exempt") || p.includes("qual")) {
+    return "Endurance has 9 of 13 ACCA professional exemptions officially confirmed. He is actively progressing along the ACCA qualification pathway to pair deep technical financial compliance with his technology execution background.";
+  }
+  if (p.includes("skill") || p.includes("stack") || p.includes("tool") || p.includes("program")) {
+    return "His multidisciplinary skill set spans:\n\n• Finance: Advanced Financial Modelling (AFM sitting Oct 2026), NAV Calculation, Trade Reconciliation, DCF/LBO Valuations, IFRS Financial Reporting, and SAP FICO.\n• Technology: Python (Pandas, NumPy, data automation), SQL (complex queries, data architecture), JavaScript, React, Git, and LLM framework integrations.\n• Product: Agile/Scrum delivery, Roadmapping, and Go-to-Market (GTM) execution strategy.";
+  }
+  if (p.includes("remot") || p.includes("dublin") || p.includes("locat") || p.includes("where")) {
+    return "Endurance is based in Dublin, Ireland. He is fully set up for remote-first work globally (including the EU, UK, USA, Canada, and Australia) and open to hybrid or on-site commitments within the Dublin IFSC financial sector.";
+  }
+  if (p.includes("experi") || p.includes("work") || p.includes("back") || p.includes("past")) {
+    return "Endurance has over 5 years of professional experience driving fintech product analytics and financial data infrastructure:\n\n• Zion Global Limited: Delivered a 45% revenue uplift within 6 months by running data-driven product roadmaps and SQL automation tracking lines.\n• Bostaneeeastern: Unlocked $10M+ in fresh revenue streams and executed quantitative DCF portfolio analysis across a $50M+ portfolio asset environment.\n• Su.N Gastronomie: Structured POS data verification frameworks and accounting controls to eliminate transactional reconciliation breaks.";
+  }
+  if (p.includes("salary") || p.includes("rate") || p.includes("pay") || p.includes("cost")) {
+    return "Endurance is open to discussing competitive compensation and contract rates aligned with market standards for FinTech Product Analyst and Financial Data Analyst roles in Dublin and remote frameworks worldwide. Let's connect via the secure contact form below or drop an inquiry directly to nwaduhuendurance@gmail.com to explore parameters!";
+  }
+  if (p.includes("hello") || p.includes("hi") || p.includes("hey") || p.includes("how are")) {
+    return "Hello! I am Endurance's portfolio assistant. Ask me anything about his financial tracking projects, ACCA status, immediate availability in Dublin, or past fintech metrics!";
+  }
+
+  return "That's a great question! While I run as an instant matching engine on this frontend, I can confirm that Endurance specializes in merging advanced data frameworks (Python, SQL, React) with core corporate accounting (NAV generation, trade breaks reconciliation, and DCF metrics). Drop that exact inquiry through the secure contact gateway form at the bottom of the page, and Endurance will respond directly via email!";
 }
 
 const fmtM = n => `$${(n / 1e6).toFixed(1)}M`;
