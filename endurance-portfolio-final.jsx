@@ -1,6 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
-
+const { useState, useEffect, useRef } = React;
+const { BarChart, Bar, LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } = Recharts;
 const C = {
   gold:"#C9A84C",goldL:"#E8C97A",goldD:"#8B6914",goldXD:"#2A1F05",goldXXD:"#140E02",
   bg:"#080808",bg2:"#0F0F0F",bg3:"#141414",bg4:"#1C1C1C",
