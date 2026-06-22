@@ -336,17 +336,24 @@ section:last-of-type{border-bottom:none}
 async function mockAIService(prompt) {
   const p = prompt.toLowerCase();
   
+ async function mockAIService(prompt) {
+  // .trim() removes any accidental trailing spaces from the user input
+  const p = prompt.trim().toLowerCase();
+  
   // ── 1. COVER LETTER GENERATION LOGIC ──────────────────────────────────────
-  if (p.length < 150 && (p.includes("analyst") || p.includes("manager") || p.includes("officer") || p.includes("associate") || p.includes("fund") || p.includes("product"))) {
+  if (p.length < 150 && (p.includes("analyst") || p.includes("manager") || p.includes("officer") || p.includes("associate") || p.includes("fund") || p.includes("product") || p.includes("engineer") || p.includes("developer") || p.includes("tech"))) {
+    // Capitalize the first letter for a clean greeting
+    const displayRole = prompt.trim().charAt(0).toUpperCase() + prompt.trim().slice(1);
+    
     return `Dear Hiring Team,
 
-I am writing to express my strong interest in joining your organization as a FinTech Product / Financial Data Specialist. With over 5 years of cross-functional experience optimizing multi-million euro product lines and engineering data infrastructure, I bring a unique combination of core corporate accounting proficiency and advanced data automation expertise.
+I am writing to express my strong interest in joining your organization. With over 5 years of cross-functional experience optimizing multi-million euro product lines and engineering data infrastructure, I bring a unique combination of core corporate accounting proficiency and advanced data automation expertise to your open role.
 
-My background directly bridges the gap between financial models and system engineering. At Zion Global Limited, I delivered a 45% revenue uplift within 6 months by executing data-driven roadmaps and building SQL automation lines that systematically eliminated corporate operational friction. Furthermore, during my tenure at Bostaneeeastern, I successfully managed risk-adjusted revenue forecasting across a $50M+ product portfolio and unlocked over $10M in fresh revenue streams by integrating automated quantitative execution pipelines. 
+My background directly bridges the gap between financial models and system engineering. At Zion Global Limited, I delivered a 45% revenue uplift within 6 months by executing data-driven roadmaps and building SQL automation lines that systematically eliminated corporate operational friction. Furthermore, during my tenure at Bostaneeastern, I successfully managed risk-adjusted revenue forecasting across a $50M+ product portfolio and unlocked over $10M in fresh revenue streams by integrating automated quantitative execution pipelines. 
 
 Having recently relocated to Dublin, I am completing my BA (Hons) in Accounting and Finance at Independent College Dublin, backed by a BSc in Artificial Intelligence from Johannes Kepler University Linz. With 9 of 13 ACCA professional exemptions already confirmed and an upcoming Advanced Financial Modeler (AFM) sitting, I am uniquely equipped to safeguard financial controls, perform deep valuations, and automate trade reconciliation breaks in real time.
 
-I welcome the opportunity to discuss how my technical skill set and commercial drive can add immediate value to your team. Thank you for your time and consideration.
+I welcome the opportunity to discuss how my technical skill set and commercial drive can add immediate value to your target initiatives. Thank you for your time and consideration.
 
 Sincerely,
 Nwaduhu Ozoemenam Endurance
@@ -356,7 +363,7 @@ nwaduhuendurance@gmail.com`;
   // ── 2. CV TAILORING LOGIC ──────────────────────────────────────────────────
   if (p.length >= 150) {
     return `[TAILORED PROFILE SUMMARY]
-Highly analytical FinTech Product Analyst and Financial Data Analyst with 5+ years of verified expertise engineering automated data systems and optimizing multi-million euro portfolios. Possesses a deep foundation in corporate accounting (9 of 13 ACCA exemptions confirmed) combined with an academic background in Artificial Intelligence (BSc, JKU Linz). Proven track record executing SQL/Python pipelines to eliminate operational friction and resolve transactional reconciliation breaks in tier-one environments. Now optimizing architectures for institutional funds, fund administration, and digital capital markets in Dublin.
+Highly analytical Specialist with 5+ years of verified expertise engineering automated data systems and optimizing multi-million euro portfolios. Possesses a deep foundation in corporate accounting (9 of 13 ACCA exemptions confirmed) combined with an academic background in Artificial Intelligence (BSc, JKU Linz). Proven track record executing SQL/Python pipelines to eliminate operational friction and resolve transactional reconciliation breaks in tier-one environments. Now optimizing architectures for institutional funds, fund administration, and digital capital markets in Dublin.
 
 [RECOMMENDED KEYWORDS & BULLET ALIGNMENT]
 • Financial Systems: Map metrics directly to NAV calculation, automated trade matching, and valuation models (DCF/LBO).
@@ -378,7 +385,7 @@ Highly analytical FinTech Product Analyst and Financial Data Analyst with 5+ yea
     return "Endurance is based in Dublin, Ireland. He is fully set up for remote-first work globally (including the EU, UK, USA, Canada, and Australia) and open to hybrid or on-site commitments within the Dublin IFSC financial sector.";
   }
   if (p.includes("experi") || p.includes("work") || p.includes("back") || p.includes("past")) {
-    return "Endurance has over 5 years of professional experience driving fintech product analytics and financial data infrastructure:\n\n• Zion Global Limited: Delivered a 45% revenue uplift within 6 months by running data-driven product roadmaps and SQL automation tracking lines.\n• Bostaneeeastern: Unlocked $10M+ in fresh revenue streams and executed quantitative DCF portfolio analysis across a $50M+ portfolio asset environment.\n• Su.N Gastronomie: Structured POS data verification frameworks and accounting controls to eliminate transactional reconciliation breaks.";
+    return "Endurance has over 5 years of professional experience driving fintech product analytics and financial data infrastructure:\n\n• Zion Global Limited: Delivered a 45% revenue uplift within 6 months by running data-driven product roadmaps and SQL automation tracking lines.\n• Bostaneeastern: Unlocked $10M+ in fresh revenue streams and executed quantitative DCF portfolio analysis across a $50M+ portfolio asset environment.\n• Su.N Gastronomie: Structured POS data verification frameworks and accounting controls to eliminate transactional reconciliation breaks.";
   }
   if (p.includes("salary") || p.includes("rate") || p.includes("pay") || p.includes("cost")) {
     return "Endurance is open to discussing competitive compensation and contract rates aligned with market standards for FinTech Product Analyst and Financial Data Analyst roles in Dublin and remote frameworks worldwide. Let's connect via the secure contact form below or drop an inquiry directly to nwaduhuendurance@gmail.com to explore parameters!";
@@ -389,7 +396,7 @@ Highly analytical FinTech Product Analyst and Financial Data Analyst with 5+ yea
 
   return "That's a great question! While I run as an instant matching engine on this frontend, I can confirm that Endurance specializes in merging advanced data frameworks (Python, SQL, React) with core corporate accounting (NAV generation, trade breaks reconciliation, and DCF metrics). Drop that exact inquiry through the secure contact gateway form at the bottom of the page, and Endurance will respond directly via email!";
 }
-
+  
 // ── CV MODAL ─────────────────────────────────────────────────────────
 function CVModal({ onClose }) {
   return (
