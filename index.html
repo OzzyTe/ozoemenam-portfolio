@@ -17,17 +17,27 @@
 
 <script type="text/babel" src="endurance-portfolio-final.jsx?v=2"></script>
     <script type="text/babel">
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
+        function mountApp() {
+            // Keep pulling the window object variables until Babel completes compilation
+            const targetApp = window.Portfolio || window.App || (typeof App !== 'undefined' ? App : null);
+            
+            if (targetApp) {
                 try {
                     const container = document.getElementById('root');
                     const root = ReactDOM.createRoot(container);
-                    root.render(React.createElement(window.Portfolio || App));
+                    root.render(React.createElement(targetApp));
+                    console.log("Portfolio canvas rendered successfully.");
                 } catch(e) {
-                    console.error("Render initialization caught: ", e);
+                    console.error("Mount initialization caught: ", e);
                 }
-            }, 200);
-        });
+            } else {
+                // If Babel is still building variables, re-check in 100ms
+                setTimeout(mountApp, 100);
+            }
+        }
+
+        // Start checking once DOM tree layout registers
+        window.addEventListener('DOMContentLoaded', mountApp);
     </script>
 </body>
 </html>
