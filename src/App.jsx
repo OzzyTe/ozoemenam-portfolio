@@ -924,21 +924,53 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      <section id="projects">
+<section id="projects">
         <div className="wrap">
-          <div className="eyebrow">Projects, Cases &amp; Blog</div>
+          <div className="eyebrow">Interactive FinTech Models</div>
           <div className="proj-list">
-            {projects.map((p,i)=>(
+            {projects.filter(p => !["casestudy", "updates"].includes(p.id)).map((p, i) => (
               <div className="proj" key={p.id}>
                 <div className="proj-top">
-                  <div><div className="ptags">{p.tags.map(t=><span className="ptag" key={t}>{t}</span>)}</div><div className="ptitle">{p.title}</div><div className="pdesc">{p.desc}</div></div>
-                  <div className="pright"><div className="pstatus"><span className="pdot"/>{p.status}</div>{p.demo&&<button className="btn btn-ghost" onClick={()=>setOpenDemo(openDemo===p.id?null:p.id)}>{openDemo===p.id?"Close":"Live Demo"}</button>}</div>
+                  <div><div className="ptags">{p.tags.map(t => <span className="ptag" key={t}>{t}</span>)}</div><div className="ptitle">{p.title}</div><div className="pdesc">{p.desc}</div></div>
+                  <div className="pright"><div className="pstatus"><span className="pdot"/>{p.status}</div>{p.demo && <button className="btn btn-ghost" onClick={() => setOpenDemo(openDemo === p.id ? null : p.id)}>{openDemo === p.id ? "Close" : "Live Demo"}</button>}</div>
                 </div>
-                <div className="pfoot">{p.note&&<span style={{fontSize:9,color:C.textM,letterSpacing:1}}>{p.note}</span>}<div className="pidx">0{i+1} / 0{projects.length}</div></div>
-                {openDemo===p.id&&p.demo&&<div className="demo-wrap"><div className="demo-body">{p.demo}</div></div>}
+                <div className="pfoot">{p.note && <span style={{fontSize:9,color:C.textM,letterSpacing:1}}>{p.note}</span>}<div className="pidx">0{i+1} / 05</div></div>
+                {openDemo === p.id && p.demo && <div className="demo-wrap"><div className="demo-body">{p.demo}</div></div>}
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="insights" style={{ background: C.bg2 }}>
+        <div className="wrap">
+          <div className="eyebrow">Case Study &amp; Blog • 2 Min Read</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px" }}>
+            
+            {/* CASE STUDY CONTAINER */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px", display: "flex", flexDirection: "column", justifyContent: "between" }}>
+              <div>
+                <div className="ptags" style={{ marginBottom: "12px" }}><span className="ptag">Case Study</span><span className="ptag">Revenue Architecture</span></div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", color: C.gold, marginBottom: "14px", fontWeight: "400" }}>FinTech Revenue Optimization Strategy</h3>
+                <p style={{ fontSize: "12px", lineHeight: "1.8", color: C.textS, fontWeight: "300", marginBottom: "20px" }}>
+                  A deep-dive analysis of multi-million euro product lines. This strategic breakdown documents cross-functional prioritization metrics, SQL-backed automation logic, and rigorous data tracking frameworks that delivered a 45% revenue uplift while completely mitigating transactional reconciliation friction for enterprise execution systems.
+                </p>
+              </div>
+              <span style={{ fontSize: "9px", color: C.textM, fontFamily: "'DM Mono', monospace", marginTop: "auto" }}>Framework integrated into core profile layout</span>
+            </div>
+
+            {/* BLOG CONTAINER (THE PIVOT) */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px", display: "flex", flexDirection: "column", justifyContent: "between" }}>
+              <div>
+                <div className="ptags" style={{ marginBottom: "12px" }}><span className="ptag">Blog</span><span className="ptag">Career Reflection</span></div>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", color: C.gold, marginBottom: "14px", fontWeight: "400" }}>The Pivot: Why I Left Traditional Accounting</h3>
+                <p style={{ fontSize: "12px", lineHeight: "1.8", color: C.textS, fontWeight: "300", marginBottom: "20px" }}>
+                  Reflecting on my professional journey, the core realization became clear: traditional accounting looks backward to record history, while FinTech engineers the automated systems that shape the future. Moving from manually balancing ledgers to programming data pipelines allows me to apply my accounting foundation directly to data systems—resolving trade breaks and optimization friction in real time before they impact the balance sheet.
+                </p>
+              </div>
+              <a href="https://twitter.com/_AustriaUpdates" target="_blank" rel="noreferrer" style={{ fontSize: "9px", color: C.gold, textDecoration: "none", fontFamily: "'DM Mono', monospace", marginTop: "auto" }}>Explore rolling updates on X →</a>
+            </div>
+
           </div>
         </div>
       </section>
