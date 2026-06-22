@@ -968,10 +968,23 @@ export default function App() {
                 </div>
               </div>
             </div>
+            <div className="testi-card">
+              <div className="testi-quote">
+                Ozoemenam demonstrated exceptional expertise in quantitative analysis and portfolio valuation during his tenure at Bostaneeastern. He successfully managed risk-adjusted revenue forecasting across our $50M+ product portfolio and built advanced automation pipelines that substantially improved corporate decision speeds. His rare ability to combine algorithmic execution models with rigorous commercial strategy makes him an invaluable asset to any high-performing product or finance team.
+              </div>
+              <div className="testi-person">
+                <div className="testi-avatar">AK</div>
+                <div>
+                  <div className="testi-name">A. Khan Ghazanfar</div>
+                  <div className="testi-title">CEO, Bostaneeastern</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      
       <section id="experience">
         <div className="wrap">
           <div className="eyebrow">Experience</div>
