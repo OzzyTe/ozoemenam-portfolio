@@ -767,7 +767,7 @@ export default function App() {
     
     try {
       // Formspree payload processing infrastructure
-      const response = await fetch("https://formspree.io/f/xanygbbd", {
+      const response = await fetch("https://formspree.io/f/mgojeyzq", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify({
