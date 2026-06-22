@@ -336,8 +336,37 @@ section:last-of-type{border-bottom:none}
 async function mockAIService(prompt) {
   const p = prompt.toLowerCase();
   
+  // ── 1. COVER LETTER GENERATION LOGIC ──────────────────────────────────────
+  if (p.length < 150 && (p.includes("analyst") || p.includes("manager") || p.includes("officer") || p.includes("associate") || p.includes("fund") || p.includes("product"))) {
+    return `Dear Hiring Team,
+
+I am writing to express my strong interest in joining your organization as a FinTech Product / Financial Data Specialist. With over 5 years of cross-functional experience optimizing multi-million euro product lines and engineering data infrastructure, I bring a unique combination of core corporate accounting proficiency and advanced data automation expertise.
+
+My background directly bridges the gap between financial models and system engineering. At Zion Global Limited, I delivered a 45% revenue uplift within 6 months by executing data-driven roadmaps and building SQL automation lines that systematically eliminated corporate operational friction. Furthermore, during my tenure at Bostaneeeastern, I successfully managed risk-adjusted revenue forecasting across a $50M+ product portfolio and unlocked over $10M in fresh revenue streams by integrating automated quantitative execution pipelines. 
+
+Having recently relocated to Dublin, I am completing my BA (Hons) in Accounting and Finance at Independent College Dublin, backed by a BSc in Artificial Intelligence from Johannes Kepler University Linz. With 9 of 13 ACCA professional exemptions already confirmed and an upcoming Advanced Financial Modeler (AFM) sitting, I am uniquely equipped to safeguard financial controls, perform deep valuations, and automate trade reconciliation breaks in real time.
+
+I welcome the opportunity to discuss how my technical skill set and commercial drive can add immediate value to your team. Thank you for your time and consideration.
+
+Sincerely,
+Nwaduhu Ozoemenam Endurance
+nwaduhuendurance@gmail.com`;
+  }
+
+  // ── 2. CV TAILORING LOGIC ──────────────────────────────────────────────────
+  if (p.length >= 150) {
+    return `[TAILORED PROFILE SUMMARY]
+Highly analytical FinTech Product Analyst and Financial Data Analyst with 5+ years of verified expertise engineering automated data systems and optimizing multi-million euro portfolios. Possesses a deep foundation in corporate accounting (9 of 13 ACCA exemptions confirmed) combined with an academic background in Artificial Intelligence (BSc, JKU Linz). Proven track record executing SQL/Python pipelines to eliminate operational friction and resolve transactional reconciliation breaks in tier-one environments. Now optimizing architectures for institutional funds, fund administration, and digital capital markets in Dublin.
+
+[RECOMMENDED KEYWORDS & BULLET ALIGNMENT]
+• Financial Systems: Map metrics directly to NAV calculation, automated trade matching, and valuation models (DCF/LBO).
+• Data Strategy: Emphasize your engineered SQL/Python pipelines which reduced operational latency and increased cross-functional team speed by 33%.
+• Core Impact: Keep your headline metrics prominent: "$10M+ in revenue unlocked, $50M+ portfolio assets handled, and 45% revenue growth accelerated."`;
+  }
+
+  // ── 3. PERSONAL ASSISTANT FAQ LOGIC ────────────────────────────────────────
   if (p.includes("avail") || p.includes("start") || p.includes("when")) {
-    return "Endurance is available for an immediate start! He has recently relocated to Dublin, Ireland, and holds a valid visa allowing full-time employment. He is ready to onboard instantly for both hybrid/on-site roles in Dublin and remote contracts globally.";
+    return "Endurance is available for an immediate start! He is based in Dublin, Ireland, and holds a valid visa allowing full-time employment. He is ready to onboard instantly for both hybrid/on-site roles in Dublin and remote contracts globally.";
   }
   if (p.includes("acca") || p.includes("exempt") || p.includes("qual")) {
     return "Endurance has 9 of 13 ACCA professional exemptions officially confirmed. He is actively progressing along the ACCA qualification pathway to pair deep technical financial compliance with his technology execution background.";
@@ -360,8 +389,6 @@ async function mockAIService(prompt) {
 
   return "That's a great question! While I run as an instant matching engine on this frontend, I can confirm that Endurance specializes in merging advanced data frameworks (Python, SQL, React) with core corporate accounting (NAV generation, trade breaks reconciliation, and DCF metrics). Drop that exact inquiry through the secure contact gateway form at the bottom of the page, and Endurance will respond directly via email!";
 }
-
-const fmtM = n => `$${(n / 1e6).toFixed(1)}M`;
 
 // ── CV MODAL ─────────────────────────────────────────────────────────
 function CVModal({ onClose }) {
