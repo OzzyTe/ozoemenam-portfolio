@@ -8,7 +8,15 @@ const C = {
   text:"#F0EDE4",textM:"#5E5A55",textS:"#9A9590",textD:"#272420",
   border:"#1A1A1A",borderM:"#242420",white:"#FFFFFF",
 };
-
+const fmtM = (v) => {
+  if (v === undefined || v === null || isNaN(v)) return "$0.0M";
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 1,
+    minimumFractionDigits: 1
+  }).format(v) + 'M';
+};
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
