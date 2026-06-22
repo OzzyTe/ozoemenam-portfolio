@@ -331,7 +331,8 @@ section:last-of-type{border-bottom:none}
   body > *:not(.cv-overlay){display:none!important}
 }
 `;
-  // .trim() removes any accidental trailing spaces from the user input
+ // .trim() removes any accidental trailing spaces from the user input
+async function mockAIService(prompt) {
   const p = prompt.trim().toLowerCase();
   
   // ── 1. COVER LETTER GENERATION LOGIC ──────────────────────────────────────
