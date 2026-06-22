@@ -331,12 +331,6 @@ section:last-of-type{border-bottom:none}
   body > *:not(.cv-overlay){display:none!important}
 }
 `;
-
-// Fallback visual mock handles for browser sandbox APIs
-async function mockAIService(prompt) {
-  const p = prompt.toLowerCase();
-  
- async function mockAIService(prompt) {
   // .trim() removes any accidental trailing spaces from the user input
   const p = prompt.trim().toLowerCase();
   
