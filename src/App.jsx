@@ -979,8 +979,7 @@ export default function App() {
           </div>
         </div>
       </section>
-
-      {/* ── INSIGHTS SECTION (CASE STUDIES & BLOGS) ── */}
+{/* ── INSIGHTS SECTION (CASE STUDIES & BLOGS) ── */}
       <section id="insights" style={{ background: C.bg2 }}>
         <div className="wrap">
           <div className="eyebrow">Case Studies</div>
@@ -1054,11 +1053,6 @@ export default function App() {
           </div>
         </div>
       </section>
-
-          </div>
-        </div>
-      </section>
-
       <section id="tools">
         <div className="wrap">
           <div className="eyebrow">Tools</div>
