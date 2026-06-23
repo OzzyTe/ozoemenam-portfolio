@@ -980,34 +980,80 @@ export default function App() {
         </div>
       </section>
 
+      {/* ── INSIGHTS SECTION (CASE STUDIES & BLOGS) ── */}
       <section id="insights" style={{ background: C.bg2 }}>
         <div className="wrap">
-          <div className="eyebrow">Case Study &amp; Blog • 2 Min Read</div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px" }}>
+          <div className="eyebrow">Case Studies</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginBottom: "60px" }}>
             
-            {/* CASE STUDY CONTAINER */}
-            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px", display: "flex", flexDirection: "column", justifyContent: "between" }}>
-              <div>
-                <div className="ptags" style={{ marginBottom: "12px" }}><span className="ptag">Case Study</span><span className="ptag">Revenue Architecture</span></div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", color: C.gold, marginBottom: "14px", fontWeight: "400" }}>FinTech Revenue Optimization Strategy</h3>
-                <p style={{ fontSize: "12px", lineHeight: "1.8", color: C.textS, fontWeight: "300", marginBottom: "20px" }}>
-                  A deep-dive analysis of multi-million euro product lines. This strategic breakdown documents cross-functional prioritization metrics, SQL-backed automation logic, and rigorous data tracking frameworks that delivered a 45% revenue uplift while completely mitigating transactional reconciliation friction for enterprise execution systems.
-                </p>
+            {/* CASE STUDY 1: ZION GLOBAL */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px" }}>
+              <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: C.gold, fontFamily: "'DM Mono',monospace", marginBottom: 10 }}>Product Management · AI</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "26px", fontWeight: "400", marginBottom: "8px", color: "#FFFFFF" }}>Delivering 45% Revenue Uplift at Zion Global Limited</h3>
+              <div style={{ fontSize: "13px", color: "#C0BDB8", fontWeight: "300", lineHeight: "1.6", marginBottom: "20px" }}>How AI/ML-informed roadmapping and data pipelines transformed enterprise financial product delivery</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "8px", marginBottom: "24px" }}>
+                {["45% revenue uplift", "33% efficiency improvement", "NPS scores lifted by 43%", "8+ PMs mentored"].map(m => (
+                  <div key={m} style={{ background: C.bg2, border: `1px solid ${C.border}`, padding: "12px 14px", fontSize: "11px", color: "#FFFFFF", fontWeight: "300" }}>{m}</div>
+                ))}
               </div>
-              <span style={{ fontSize: "9px", color: C.textM, fontFamily: "'DM Mono', monospace", marginTop: "auto" }}>Framework integrated into core profile layout</span>
+              <div style={{ fontSize: "13px", lineHeight: "2", color: "#FFFFFF", fontWeight: "300" }}>
+                <p style={{ marginBottom: "12px" }}>At Zion Global Limited, I inherited a fragmented product portfolio with no clear data strategy. Enterprise clients were experiencing transactional reconciliation breaks and operational friction that was costing both time and revenue.</p>
+                <p style={{ marginBottom: "12px" }}>I led the design and deployment of SQL-backed automation systems and advanced data pipelines, reducing reconciliation errors by over 40% within the first quarter. By applying NLP-powered behavioural analytics to product iteration cycles, we systematically identified and resolved friction points before they reached clients.</p>
+                <p>The result: 45% revenue uplift within 6 months, NPS scores up 43%, and a cross-functional delivery framework that continues to be used across the organisation.</p>
+              </div>
             </div>
 
-            {/* BLOG CONTAINER (THE PIVOT) */}
-            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px", display: "flex", flexDirection: "column", justifyContent: "between" }}>
-              <div>
-                <div className="ptags" style={{ marginBottom: "12px" }}><span className="ptag">Blog</span><span className="ptag">Career Reflection</span></div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "24px", color: C.gold, marginBottom: "14px", fontWeight: "400" }}>The Pivot: Why I Left Traditional Accounting</h3>
-                <p style={{ fontSize: "12px", lineHeight: "1.8", color: C.textS, fontWeight: "300", marginBottom: "20px" }}>
-                  Reflecting on my professional journey, the core realization became clear: traditional accounting looks backward to record history, while FinTech engineers the automated systems that shape the future. Moving from manually balancing ledgers to programming data pipelines allows me to apply my accounting foundation directly to data systems—resolving trade breaks and optimization friction in real time before they impact the balance sheet.
-                </p>
+            {/* CASE STUDY 2: BOSTANEASTERN */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px" }}>
+              <div style={{ fontSize: 8, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: C.gold, fontFamily: "'DM Mono',monospace", marginBottom: 10 }}>Executive Product · Quantitative Finance</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "26px", fontWeight: "400", marginBottom: "8px", color: "#FFFFFF" }}>Unlocking $10M in Revenue at Bostaneeastern</h3>
+              <div style={{ fontSize: "13px", color: "#C0BDB8", fontWeight: "300", lineHeight: "1.6", marginBottom: "20px" }}>How DCF/LBO analysis, Python sentiment modelling, and AI vendor partnerships restructured a $50M+ portfolio</div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "8px", marginBottom: "24px" }}>
+                {["$10M revenue unlocked", "$50M+ portfolio managed", "NPS: +32 to +65", "40% faster execution"].map(m => (
+                  <div key={m} style={{ background: C.bg2, border: `1px solid ${C.border}`, padding: "12px 14px", fontSize: "11px", color: "#FFFFFF", fontWeight: "300" }}>{m}</div>
+                ))}
               </div>
-              <a href="https://twitter.com/_AustriaUpdates" target="_blank" rel="noreferrer" style={{ fontSize: "9px", color: C.gold, textDecoration: "none", fontFamily: "'DM Mono', monospace", marginTop: "auto" }}>Explore rolling updates on X →</a>
+              <div style={{ fontSize: "13px", lineHeight: "2", color: "#FFFFFF", fontWeight: "300" }}>
+                <p style={{ marginBottom: "12px" }}>Bostaneeastern needed to expand its revenue base across the Middle East and global markets. The existing product portfolio lacked the quantitative rigour and automation infrastructure to compete at enterprise level.</p>
+                <p style={{ marginBottom: "12px" }}>I conducted DCF/LBO valuations across the $50M+ product portfolio, built Python-based sentiment analysis models for an automated Voice-of-the-Customer programme, and negotiated strategic AI vendor partnerships that opened $10M in new revenue lines.</p>
+                <p>By integrating SQL-backed quantitative models directly into corporate decision pipelines, we reduced execution time by 40% and drove NPS from +32 to +65 — a result that directly influenced product investment decisions across the organisation.</p>
+              </div>
             </div>
+
+          </div>
+
+          <div className="eyebrow">Blog Posts</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            
+            {/* BLOG 1: FINANCIAL MODELLING */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px" }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 10 }}>
+                <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: C.gold, fontFamily: "'DM Mono',monospace" }}>FinTech · Product</span>
+                <span style={{ fontSize: 8, color: "#C0BDB8", fontFamily: "'DM Mono',monospace" }}>May 2026</span>
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "26px", fontWeight: "400", marginBottom: "12px", color: "#FFFFFF" }}>Why Every FinTech Product Analyst Needs to Understand Financial Modelling</h3>
+              <div style={{ fontSize: "13px", lineHeight: "2", color: "#FFFFFF", fontWeight: "300" }}>
+                <p style={{ marginBottom: "12px" }}>Most FinTech product analysts know how to talk about revenue impact. But ask them to build a DCF model from scratch — adjust the WACC, change the terminal growth rate, watch the enterprise value shift in real time — and the room goes quiet.</p>
+                <p>This gap is not just academic. IFSC firms, asset managers, and fintech scale-ups are increasingly looking for analysts who can translate data into financial decisions, not just product metrics. NPS and engagement rates matter. But so do free cash flow projections and margin analysis. The analysts who get hired fastest are the ones who can speak the same language as the CFO.</p>
+              </div>
+            </div>
+
+            {/* BLOG 2: IFSC Hub */}
+            <div style={{ background: C.bg, border: `1px solid ${C.border}`, padding: "32px" }}>
+              <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 10 }}>
+                <span style={{ fontSize: 8, fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", color: C.gold, fontFamily: "'DM Mono',monospace" }}>Career · Dublin IFSC</span>
+                <span style={{ fontSize: 8, color: "#C0BDB8", fontFamily: "'DM Mono',monospace" }}>Apr 2026</span>
+              </div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "26px", fontWeight: "400", marginBottom: "12px", color: "#FFFFFF" }}>Breaking Into Dublin's IFSC Without a Traditional Finance Background</h3>
+              <div style={{ fontSize: "13px", lineHeight: "2", color: "#FFFFFF", fontWeight: "300" }}>
+                <p style={{ marginBottom: "12px" }}>Dublin's International Financial Services Centre is home to some of the world's largest fund administrators, asset managers, and global banks. The landscape is shifting. The IFSC increasingly needs people who can operate at the intersection of finance and technology — people who understand NAV calculation and can also build the data pipeline that automates it.</p>
+                <p>The key is framing. Show that you understand fund operations — what happens at month-end NAV, how trade breaks are investigated, what custodian reconciliation looks like. Then show that you can build the tools that make those processes faster and more accurate.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
           </div>
         </div>
