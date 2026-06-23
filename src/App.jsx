@@ -918,7 +918,7 @@ export default function App() {
               <p className="hero-bio">FinTech Product Analyst and Financial Data Analyst with 5+ years delivering high-impact financial technology products across B2B and B2C platforms. Completed a BSc in Artificial Intelligence at Johannes Kepler Universität Linz, Austria — bridging the gap between financial modelling (DCF and NAV) and advanced data automation pipelines to eliminate corporate operational friction, mitigate transactional reconciliation breaks, and ensure strict regulatory compliance. $10M+ revenue unlocked · $50M+ portfolio managed · Available globally.</p>
               <div className="hero-ctas">
                 <button className="btn btn-gold" onClick={()=>go("projects")}>View Projects</button>
-               <button className="btn btn-outline" onClick={() => setShowCV(true)}>Download CV</button>
+              <button className="btn btn-outline" onClick={() => setShowCV(true)}>Download CV</button>
                 <button className="btn btn-ghost" onClick={()=>go("contact")}>Get In Touch</button>
               </div>
               <div className="stats">
