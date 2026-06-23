@@ -888,7 +888,7 @@ export default function App() {
               <li key={n}><button className={`nav-btn${active===n?" active":""}`} onClick={()=>go(n)}>{n}</button></li>
             ))}
           </ul>
-         <a href="/resume.pdf" target="_blank" rel="noreferrer" className="nav-cv" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Download CV</a>
+         <button onClick={() => setShowCV(true)} className="nav-cv" style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>Download CV</button>
         </div>
       </nav>
       <div className={`drawer-overlay${drawerOpen?" open":""}`} onClick={()=>setDrawerOpen(false)}/>
